@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-container">
+            <h2 class="page-title">Edit Bat</h2>
+            <form action="/bats/<%= bat._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="brandName" class="form-label">
+                            <i class="fas fa-tag me-2"></i>Brand Name
+                        </label>
+                        <input type="text" class="form-control" id="brandName" name="bat[brandName]" value="<%= bat.brandName %>" readonly>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="price" class="form-label">
+                            <i class="fas fa-dollar-sign me-2"></i>Price
+                        </label>
+                        <input type="number" class="form-control" id="price" name="bat[price]" value="<%= bat.price %>" required min="0">
+                        <div class="invalid-feedback">
+                            Please provide a valid price.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="form-label">
+                        <i class="fas fa-image me-2"></i>Image URL
+                    </label>
+                    <input type="url" class="form-control" id="image" name="bat[image]" value="<%= bat.image %>" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid image URL.
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="desc" class="form-label">
+                        <i class="fas fa-align-left me-2"></i>Description
+                    </label>
+                    <textarea class="form-control" id="desc" name="bat[desc]" rows="3" required><%= bat.desc %></textarea>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="brandAmbassador" class="form-label">
+                        <i class="fas fa-user-tie me-2"></i>Brand Ambassador
+                    </label>
+                    <input type="text" class="form-control" id="brandAmbassador" name="bat[brandAmbassador]" value="<%= bat.brandAmbassador %>" required>
+                    <div class="invalid-feedback">
+                        Please provide a brand ambassador.
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Update Bat
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form validation
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script> 

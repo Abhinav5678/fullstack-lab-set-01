@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-center mb-4">Add New Bat</h2>
+        <form action="/bats" method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="brandName" class="form-label">Brand Name</label>
+                <input type="text" class="form-control" id="brandName" name="bat[brandName]" required>
+                <div class="invalid-feedback">
+                    Please provide a brand name.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="bat[price]" required min="0">
+                <div class="invalid-feedback">
+                    Please provide a valid price.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL</label>
+                <input type="url" class="form-control" id="image" name="bat[image]" required>
+                <div class="invalid-feedback">
+                    Please provide a valid image URL.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Description</label>
+                <textarea class="form-control" id="desc" name="bat[desc]" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    Please provide a description.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="brandAmbassador" class="form-label">Brand Ambassador</label>
+                <input type="text" class="form-control" id="brandAmbassador" name="bat[brandAmbassador]" required>
+                <div class="invalid-feedback">
+                    Please provide a brand ambassador.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Bat</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Form validation
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script> 

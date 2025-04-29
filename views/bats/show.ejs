@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="position-relative">
+                <img src="<%= bat.image %>" class="card-img-top" alt="<%= bat.brandName %>">
+                <div class="position-absolute top-0 end-0 p-2">
+                    <span class="badge bg-primary">
+                        <i class="fas fa-dollar-sign me-1"></i><%= bat.price %>
+                    </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-tag me-2"></i><%= bat.brandName %>
+                </h5>
+                <p class="card-text">
+                    <i class="fas fa-align-left me-2"></i><strong>Description:</strong> <%= bat.desc %>
+                </p>
+                <p class="card-text">
+                    <i class="fas fa-user-tie me-2"></i><strong>Brand Ambassador:</strong> <%= bat.brandAmbassador %>
+                </p>
+                <p class="card-text">
+                    <i class="fas fa-user me-2"></i><small class="text-muted">Added by: <%= bat.author.username %></small>
+                </p>
+                
+                <% if (currentUser && currentUser._id.equals(bat.author._id)) { %>
+                    <div class="mt-4">
+                        <a href="/bats/<%= bat._id %>/edit" class="btn btn-warning">
+                            <i class="fas fa-edit me-2"></i>Edit
+                        </a>
+                        <form action="/bats/<%= bat._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-2"></i>Delete
+                            </button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div> 
